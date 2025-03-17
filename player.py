@@ -1,6 +1,6 @@
 import pygame
 from settings import Settings
-
+from bullet import Bullet
 class Player(pygame.sprite.Sprite):
     def __init__(self, game):
         super().__init__() #kế thừa lớp con từ lớp cha
@@ -37,8 +37,9 @@ class Player(pygame.sprite.Sprite):
          if self.direction.x and self.direction.y:
              self.direction.normalize()
          self.rect.x+=self.direction.x * self.settings.player_speed
-         self.rect.y+=self.direction.y* self.settings.player_speed
-
- 
-
-    
+         self.rect.y=self.direction.y* self.settings.player_speed
+    def shoot(self):
+        bullet1=Bullet(self,self.rect.x,self.rect.y)
+        bullet2=Bullet(self,self.rect.x+10,self.rect.y)
+        bullet3=Bullet(self,self.rect.x+20,self.rect.y)
+        
